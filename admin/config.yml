@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "store"
+    label: "Store"
+    files:
+      - name: "products"
+        label: "Products"
+        file: "content/products.json"
+        format: "json"
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.name}} — KSh {{fields.price}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Category", name: "category", widget: "select", options: ["skincare","perfumes","cosmetics","jewellery","hair","accessories","gifts"] }
+              - { label: "Price (KSh)", name: "price", widget: "number", value_type: "int", min: 0 }
+              - { label: "Description", name: "desc", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
